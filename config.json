@@ -1,0 +1,9 @@
+{
+  "ftp":{
+    "server": "",
+    "name": "" ,
+    "password": ""
+    "src": "",
+    "dst": "" 
+  }
+}
