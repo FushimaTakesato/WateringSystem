@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
+import sys
 import ftp
 
 if __name__ == '__main__':
