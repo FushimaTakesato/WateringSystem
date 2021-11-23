@@ -95,7 +95,7 @@ def importConfig(path):
 
 if __name__ == '__main__':
     path = sys.argv[1]
-    importConfig(path)
+    server, username, password, src, dst = importConfig(path)
     #alive.logのアップロード
     uploadFTP( server, username, password, src+"alive.log", dst)
     #water.logのアップロード
