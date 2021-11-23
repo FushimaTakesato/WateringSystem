@@ -14,9 +14,11 @@ class FTP_:
         self.ftp.login(username, password)
         self.ftp.set_pasv(True) 
         #self.ftp.retrlines('LIST')
+        """
         while(self.internet_check() == False):
             print('waiting for internet connection...')
             time.sleep(1.0)
+        """
     def disconnect(self):
         self.ftp.quit()
         
@@ -24,23 +26,28 @@ class FTP_:
         try:
             socket.setdefaulttimeout(timeout)
             socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
-            print('conneceted to internet')
+            #print('conneceted to internet')
             return True
         except Exception as ex:
             print(ex.message)
-            print('not connect to internet')
+            #print('not connect to internet')
             return False
 
     def ftp_upload(self, src, dst):
         try:
             _file = open(src, 'rb')
             self.ftp.cwd('./')
+            #ファイル名を変える
+            """
             #basename = os.path.basename(src)
             basename_without_ext = os.path.splitext(os.path.basename(src))[0]
             now = datetime.datetime.now()
             fnow = '{0:%Y%m%d%H%M}'.format(now)
             fn = basename_without_ext + '_' + fnow + '.log'
-            print(src + "->" + fn)
+            #print(src + "->" + fn)
+            """
+            #ファイル名を変えない
+            fn = os.path.basename(src)
             self.ftp.storbinary('STOR ' + dst + fn, _file)
             _file.close()
             return 1
@@ -50,7 +57,7 @@ class FTP_:
 def uploadFTP(server, username, password, src, dst):
     #アップロードするファイルの確認
     if(os.path.isfile(src) == False):
-        print(src + " is not updated!")
+        #print(src + " is not updated!")
         return 0
     ftp0 = FTP_(server, username, password)
     valid = ftp0.ftp_upload(src, dst)
@@ -58,13 +65,13 @@ def uploadFTP(server, username, password, src, dst):
         os.remove(src)
     return 1
     
-if __name__ == '__main__':
+def importConfig(path):
     #Setting
     #jsonの読み込み。もしなければ終了
-    if(os.path.isfile(sys.argv[1]) == False):
+    if(os.path.isfile(path) == False):
         print("Please set config.json as argv[1]")
         exit()
-    f = open(sys.argv[1], 'r')
+    f = open(path, 'r')
     json_data = json.load(f)
     #キーの有無を確認
     if('ftp' not in json_data):
@@ -84,7 +91,11 @@ if __name__ == '__main__':
     password = json_data["ftp"]["password"]
     src = json_data["ftp"]["src"]
     dst = json_data["ftp"]["dst"]
+    return server, username, password, src, dst
 
+if __name__ == '__main__':
+    path = sys.argv[1]
+    importConfig(path)
     #alive.logのアップロード
     uploadFTP( server, username, password, src+"alive.log", dst)
     #water.logのアップロード
