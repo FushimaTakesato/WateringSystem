@@ -1,3 +1,4 @@
 *.jpg
 *.odp
 log/
+config.json
