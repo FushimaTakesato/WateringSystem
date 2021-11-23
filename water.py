@@ -3,9 +3,6 @@
 import RPi.GPIO as GPIO
 import time
 import datetime
-import sys
-import ftp
-
 def giveWater():
     try:
         GPIO.setmode(GPIO.BOARD)
@@ -26,6 +23,3 @@ if __name__ == '__main__':
         print("Watering Sccessed " + fnow)
     else:
         print("Watering Failed " + fnow)
-    path = sys.argv[1]
-    server, username, password, src, dst = ftp.importConfig(path)
-    ftp.uploadFTP( server, username, password, src+"water.log", dst)

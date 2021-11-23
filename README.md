@@ -32,8 +32,8 @@ $ git fetch
 $ git pull
 $ crontab -e
 # m h  dom mon dow   command
-0 10 * * * python {path to this repository}/water.py  [path to config.json]/config.json > {path to this repository}/log/water.log
-*/1 * * * * python {path to this repository}/alive.py  [path to config.json]/config.json > {path to this repository}/log/alive.log
+0 10 * * * {path to this repository}/water.sh
+*/5 * * * * {path to this repository}/alive.sh
 ```
 * FTPの設定  
 config.jsonを下記のように作成し、ソースコードと同じフォルダに保存する。  
