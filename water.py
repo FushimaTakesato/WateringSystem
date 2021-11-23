@@ -27,5 +27,5 @@ if __name__ == '__main__':
     else:
         print("Watering Failed " + fnow)
     path = sys.argv[1]
-    server, username, password, src, dst = importConfig(path)
+    server, username, password, src, dst = ftp.importConfig(path)
     ftp.uploadFTP( server, username, password, src+"water.log", dst)
