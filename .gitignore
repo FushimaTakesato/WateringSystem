@@ -2,3 +2,4 @@
 *.odp
 log/
 config.json
+/__pycache__

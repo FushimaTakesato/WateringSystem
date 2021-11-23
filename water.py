@@ -9,7 +9,7 @@ def giveWater():
         RELAY = 11
         GPIO.setup(RELAY, GPIO.OUT)
         GPIO.output(RELAY, True)
-        time.sleep(1.5)
+        time.sleep(2.0)
         GPIO.output(RELAY, False)
         GPIO.cleanup(RELAY)
         return 1
