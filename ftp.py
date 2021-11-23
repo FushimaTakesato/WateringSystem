@@ -84,6 +84,11 @@ if __name__ == '__main__':
     password = json_data["ftp"]["password"]
     src = json_data["ftp"]["src"]
     dst = json_data["ftp"]["dst"]
-    uploadFTP( server, username, password, src, dst)
+
+    #alive.logのアップロード
+    uploadFTP( server, username, password, src+"alive.log", dst)
+    #water.logのアップロード
+    uploadFTP( server, username, password, src+"water.log", dst)
+    
     exit() 
 
