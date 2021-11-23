@@ -61,7 +61,7 @@ def uploadFTP(server, username, password, src, dst):
 if __name__ == '__main__':
     #Setting
     #jsonの読み込み。もしなければ終了
-    if(os.path.isfile(file_path) == False):
+    if(os.path.isfile("config.json") == False):
         print("Please create config.json")
         exit()
     f = open('config.json', 'r')
