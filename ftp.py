@@ -63,7 +63,7 @@ if __name__ == '__main__':
     #jsonの読み込み。もしなければ終了
     if(os.path.isfile(file_path) == False):
         print("Please create config.json")
-        return 0
+        exit()
     f = open('config.json', 'r')
     json_data = json.load(f)
     #キーの有無を確認
@@ -85,5 +85,5 @@ if __name__ == '__main__':
     src = json_data["ftp"]["src"]
     dst = json_data["ftp"]["dst"]
     uploadFTP( server, username, password, src, dst)
-
+    exit() 
 
