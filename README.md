@@ -10,7 +10,7 @@
 
 * 1日に1回、ポンプを動かして水を流す。
 * 5分に1回、動いているかログをとる。
-* 1時間に1回、サーバーにアップロードする。その際に、ファイル名に年月日時間を付す。ローカルのファイルは削除する。
+* 各処理の後、サーバーにアップロードする。
 
 # Requirement
 
@@ -25,7 +25,7 @@ pip install RPi.GPIO
 # Usage
 
 * crontabで起動時間を設定する  
-(例)午前10時にwater.pyを起動する。5分おきにalive.pyを起動する。1時間おきにftp.pyを起動する。
+(例)午前10時にwater.pyを起動する。5分おきにalive.pyを起動する。
 
 ```bash
 $ git fetch
@@ -34,7 +34,6 @@ $ crontab -e
 # m h  dom mon dow   command
 0 10 * * * python {path to this repository}/water.py >> {path to this repository}/log/water.log
 */1 * * * * python {path to this repository}/alive.py >> {path to this repository}/log/alive.log
-5 */1 * * * python {path to this repository}/ftp.py [path to config.json]/config.json
 ```
 * FTPの設定  
 config.jsonを下記のように作成し、ソースコードと同じフォルダに保存する。  
