@@ -6,7 +6,7 @@ from ftplib import FTP
 import os
 import socket
 import json
-
+import sys
 
 class FTP_:
     def __init__(self, server, username, password):
@@ -61,8 +61,8 @@ def uploadFTP(server, username, password, src, dst):
 if __name__ == '__main__':
     #Setting
     #jsonの読み込み。もしなければ終了
-    if(os.path.isfile("config.json") == False):
-        print("Please create config.json")
+    if(os.path.isfile(sys.argv[1]) == False):
+        print("Please set config.json as argv[1]")
         exit()
     f = open('config.json', 'r')
     json_data = json.load(f)
