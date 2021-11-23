@@ -20,6 +20,6 @@ if __name__ == '__main__':
     now = datetime.datetime.now()
     fnow = '{0:%Y%m%d%H%M}'.format(now)
     if(flag):
-        print("Watering Sccessed " + fnow)
+        print(fnow)
     else:
-        print("Watering Failed " + fnow)
+        print("Failed " + fnow)
