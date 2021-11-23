@@ -50,7 +50,7 @@ class FTP_:
 def uploadFTP(server, username, password, src, dst):
     #アップロードするファイルの確認
     if(os.path.isfile(src) == False):
-        print("No file is updated!")
+        print(src + " is not updated!")
         return 0
     ftp0 = FTP_(server, username, password)
     valid = ftp0.ftp_upload(src, dst)
