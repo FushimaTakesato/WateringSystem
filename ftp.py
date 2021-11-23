@@ -64,7 +64,7 @@ if __name__ == '__main__':
     if(os.path.isfile(sys.argv[1]) == False):
         print("Please set config.json as argv[1]")
         exit()
-    f = open('config.json', 'r')
+    f = open(sys.argv[1], 'r')
     json_data = json.load(f)
     #キーの有無を確認
     if('ftp' not in json_data):
