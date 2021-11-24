@@ -57,7 +57,12 @@ class FTP_:
 def uploadFTP(server, username, password, src, dst):
     #アップロードするファイルの確認
     if(os.path.isfile(src) == False):
-        #print(src + " is not updated!")
+        print(src + " is not updated!")
+        return 0
+    #アップロードするファイルが10b未満だったら、アップロードしない。
+    size = os.path.getsize(src)
+    if(size < 10):
+        print("null")
         return 0
     ftp0 = FTP_(server, username, password)
     valid = ftp0.ftp_upload(src, dst)

@@ -21,5 +21,3 @@ if __name__ == '__main__':
     fnow = '{0:%Y%m%d%H%M}'.format(now)
     if(flag):
         print(fnow)
-    else:
-        print("Failed " + fnow)
